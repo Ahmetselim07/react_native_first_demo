@@ -29,8 +29,34 @@ const SignupPage = ({ navigation }) => {
   const { isLoading } = useSelector((state) => state.user);
 
   const handleRegister = () => {
-    dispatch(register({ email, password }));
+    // Check if fields are empty
+    if (!name || !email || !password) {
+      alert("All fields are required.");
+      return;
+    }
+
+     // Validate email format
+     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+     if (!emailRegex.test(email)) {
+       alert("Invalid email format.");
+       return;
+     }
+
+     // Validate password length
+     if (password.length < 6) {
+       alert("Password must be at least 6 characters long.");
+       return;
+     }
+
+     // Dispatch register action
+     dispatch(register({ name, email, password }));
+   
+
+
+
+    
   };
+
 
   if (isLoading) {
     return <Loading />;
@@ -54,25 +80,25 @@ const SignupPage = ({ navigation }) => {
 
             <View style={styles.textInputContainer}>
               <CustomTextInput
-                title="Name"
+                title="Name *"
                 isSecureText={false}
                 onChangeText={setName}
                 value={name}
-                placeholder="Enter Your Name"
+                placeholder="Enter your name"
               />
               <CustomTextInput
-                title="Email"
+                title="Email *"
                 isSecureText={false}
                 onChangeText={setEmail}
                 value={email}
-                placeholder="Enter Your Email"
+                placeholder="Enter your email"
               />
               <CustomTextInput
-                title="Password"
+                title="Password *"
                 isSecureText={true}
                 onChangeText={setPassword}
                 value={password}
-                placeholder="Enter Your Password"
+                placeholder="Enter your password"
               />
             </View>
             <View style={styles.signUpOptions}>

@@ -9,6 +9,7 @@ const CustomTextInput = (props) => {
       value={props.value}
         secureTextEntry={props.isSecureText}
         placeholder={props.placeholder}
+        placeholderTextColor="white"
         onChangeText={props.onChangeText}
         style={styles.textInput}
       ></TextInput>
@@ -23,7 +24,8 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.5,
     borderColor: "white",
     fontWeight: "bold",
-
+    color: "white",
+    
     width: "100%",
     height: 50,
     borderRadius: 10,

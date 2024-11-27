@@ -15,7 +15,7 @@ const LoginPage = ({ navigation }) => {
   useEffect(() => {
     dispatch(autoLogin())
       .unwrap()
-      .catch((err) => console.error("Auto login failed:", err));
+     
   }, [dispatch]);
 
   useEffect(() => {
@@ -50,14 +50,14 @@ const LoginPage = ({ navigation }) => {
         isSecureText={false}
         onChangeText={(text) => setEmail(text.toLowerCase())}
         value={email}
-        placeholder="Enter Your Email"
+        placeholder="Enter your email"
       />
       <CustomTextInput
         title="Password"
         isSecureText={true}
         onChangeText={(password) => setPassword(password)}
         value={password}
-        placeholder="Enter Your Password"
+        placeholder="Enter your password"
       />
       <Text style={{ color: "red", marginVertical: 10 }}>
         {error ? "Login failed. Please check your email and password." : ""}
@@ -70,7 +70,7 @@ const LoginPage = ({ navigation }) => {
         pressedButtonColor="gray"
       />
       <CustomButton
-        buttonText="Signup"
+        buttonText="Sign up"
         setWidth="30%"
         onPress={() => navigation.navigate("Signup")}
         buttonColor="gray"
